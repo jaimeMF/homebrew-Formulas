@@ -2,9 +2,9 @@ require 'formula'
 
 class Unar < Formula
   homepage 'http://unarchiver.c3.cx/commandline'
-  url 'http://theunarchiver.googlecode.com/files/unar1.4_src.zip'
-  version '1.4'
-  sha1 'eb028ecbfdd9c0a87d56268b69f87ac5a12d6f0b'
+  url 'https://theunarchiver.googlecode.com/files/unar1.5_src.zip'
+  version '1.5'
+  sha1 '972a37909ab7fde53e1561dfe0fb6a729d9d59dc'
   head 'https://code.google.com/p/theunarchiver/' , :using => :hg
 
   depends_on :xcode
