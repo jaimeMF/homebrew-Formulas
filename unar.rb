@@ -19,14 +19,16 @@ class Unar < Formula
       move "./The Unarchiver/UniversalDetector" ,"./UniversalDetector"
       move "./The Unarchiver/XADMaster" ,"./XADMaster"
     end
-    #Build dependencies:
-    system "xcodebuild -project ./UniversalDetector/UniversalDetector.xcodeproj -target libUniversalDetector.a SYMROOT=../"
-    system "xcodebuild -project ./XADMaster/XADMaster.xcodeproj -target libXADMaster.a SYMROOT=../"
-    move "./Release/libUniversalDetector.a",  "./Debug/libUniversalDetector.a"
+    #Build XADMaster.framework:
+    system "xcodebuild -project ./XADMaster/XADMaster.xcodeproj -target XADMaster SYMROOT=../ -configuration Release" 
     #Build unar and lsar
-    system "xcodebuild -project ./XADMaster/XADMaster.xcodeproj -target unar SYMROOT=../"
-    system "xcodebuild -project ./XADMaster/XADMaster.xcodeproj -target lsar SYMROOT=../"
-    bin.install "./Debug/unar", "./Debug/lsar"
+    system "xcodebuild -project ./XADMaster/XADMaster.xcodeproj -target unar SYMROOT=../ -configuration Release"
+    system "xcodebuild -project ./XADMaster/XADMaster.xcodeproj -target lsar SYMROOT=../ -configuration Release"
+    bin.install "./Release/unar", "./Release/lsar"
+    include.mkpath
+    mkdir "#{include}/libXADMaster/"
+    copy Dir["./Release/XADMaster.framework/Headers/*"], "#{include}/libXADMaster/"
+    lib.install "./Release/libXADMaster.a" , "./Release/XADMaster.framework"
     #Copy man pages
     man1.install "./Extra/lsar.1", "./Extra/unar.1"
   end
