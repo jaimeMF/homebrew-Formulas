@@ -2,8 +2,8 @@ require 'formula'
 
 class FirefoxAddonSdk < Formula
   homepage 'https://github.com/mozilla/addon-sdk/'
-  url 'https://ftp.mozilla.org/pub/mozilla.org/labs/jetpack/addon-sdk-1.14.tar.gz'
-  sha1 'fa9876b5adfa9536802cfbdfe03a3e3e3123be0c'
+  url 'https://ftp.mozilla.org/pub/mozilla.org/labs/jetpack/addon-sdk-1.16.tar.gz'
+  sha1 'd282f575523f5577cf0f7a604b1084ab3fa3468b'
 
   def patches
     DATA
