@@ -17,11 +17,12 @@ class Micropython < Formula
 
   def install
     cd "unix" do
+      inreplace "main.c" do |s|
+        s.gsub! "/usr/lib/micropython", "#{lib}/micropython"
+      end
       system "make", "PREFIX=#{prefix}"
-      libexec.install "micropython"
+      bin.install "micropython"
     end
-
-    (bin/"micropython").write_env_script(libexec/"micropython", :MICROPYPATH => "~/.micropython/lib:#{lib}/micropython")
 
     resource("micropython-lib").stage do
       inreplace "Makefile" do |s|
