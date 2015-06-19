@@ -6,6 +6,7 @@ class Micropython < Formula
     url "https://github.com/micropython/micropython-lib.git"
   end
 
+  depends_on "python3" => :build
   depends_on "pkg-config" => :build
   # micropython-lib requires GNU core utils
   # https://github.com/micropython/micropython-lib/issues/10
